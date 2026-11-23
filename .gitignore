@@ -1,10 +1,42 @@
-# Bytecode e cache Python
+
+scr/key/*
+!scr/key/.gitkeep
+key_A.txt
+key_B.txt
+*.key
+*.bin
+
+
+scr/state.json
+state.json
+
+
+encrypted_*
+decrypted_*
+last_encrypted_*
+cipher_*
+*_temp.txt
+conversazione_cript.txt
+
+
+_bench_*
+bench_*
+
+
+*.o
+*.obj
+*.pdb
+*.ilk
+
+!key_gen/key_gen.exe
+
+
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 
-# Eseguibili e build (es. PyInstaller, cx_Freeze, Cython)
+
 *.exe
 *.dll
 *.spec
@@ -23,7 +55,7 @@ wheels/
 .installed.cfg
 *.egg
 
-# Ambienti virtuali
+
 .venv/
 venv/
 env/
@@ -31,12 +63,12 @@ ENV/
 env.bak/
 venv.bak/
 
-# Variabili d'ambiente e segreti
+
 .env
 .env.*
 !.env.example
 
-# Testing e coverage
+
 .pytest_cache/
 .coverage
 .coverage.*
@@ -46,13 +78,13 @@ htmlcov/
 nosetests.xml
 coverage.xml
 
-# Type checker e linter
+
 .mypy_cache/
 .pytype/
 .pyre/
 .ruff_cache/
 
-# Log e file temporanei
+
 *.log
 *.tmp
 *.temp
@@ -60,13 +92,13 @@ coverage.xml
 *.swp
 *~
 
-# IDE ed editor
+
 .vscode/
 .idea/
 *.sublime-project
 *.sublime-workspace
 
-# File di sistema operativo
+
 .DS_Store
 .AppleDouble
 .LSOverride
