@@ -19,7 +19,7 @@ def encrypt(path: str, chunk_size):
         with open(file_path, "rb") as f:
             size = Path(file_path).stat().st_size
 
-            if size + get_data.get_encrypt_counter() > get_data.get_key_size():
+            if size + get_data.get_encrypt_counter() > get_data.get_key_size("A"):
                 print("Key length exceded!")
                 get_data.reset_state()
                 return

@@ -19,7 +19,7 @@ def decrypt(path: str, chunk_size):
         with open(file_path, "rb") as f:
             size = Path(file_path).stat().st_size
 
-            if size + get_data.get_decrypt_counter() > get_data.get_key_size():
+            if size + get_data.get_decrypt_counter() > get_data.get_key_size("B"):
                 print("Key length exceded!")
                 get_data.reset_state()
                 return

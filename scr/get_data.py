@@ -65,15 +65,15 @@ def get_parent(file_path: str):
     return "\\".join(lst_path[:-1:])
 
 
-def get_key_size():
-    return Path("scr\\key\\key.txt").stat().st_size
+def get_key_size(k:str):
+    return Path(f"scr\\key\\key_{k}.txt").stat().st_size
 
 
 def get_chunked(file, file_path, mode, chunk_size=1024):
     size = Path(file_path).stat().st_size
     counter = 0
     current_count = get_decrypt_counter() if mode == "d" else get_encrypt_counter()
-    with open("scr\\key\\key.txt", "rb") as k:
+    with open(f"scr\\key\\key_{'A' if mode == 'e' else 'B'}.txt", "rb") as k:
         while counter < size:
             file.seek(counter)
             file_chunk = file.read(
@@ -88,4 +88,7 @@ def get_chunked(file, file_path, mode, chunk_size=1024):
 
             yield file_chunk, key_chunk
 
-        add_decrypt_counter(size) if mode == "d" else add_encrypt_counter(size)
+        if mode == "d":
+            add_decrypt_counter(size)
+        elif mode == "e":
+            add_encrypt_counter(size)
