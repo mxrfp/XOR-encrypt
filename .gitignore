@@ -1,0 +1,75 @@
+# Bytecode e cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Eseguibili e build (es. PyInstaller, cx_Freeze, Cython)
+*.exe
+*.dll
+*.spec
+build/
+dist/
+develop-eggs/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Ambienti virtuali
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Variabili d'ambiente e segreti
+.env
+.env.*
+!.env.example
+
+# Testing e coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+nosetests.xml
+coverage.xml
+
+# Type checker e linter
+.mypy_cache/
+.pytype/
+.pyre/
+.ruff_cache/
+
+# Log e file temporanei
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# IDE ed editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# File di sistema operativo
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+Desktop.ini
