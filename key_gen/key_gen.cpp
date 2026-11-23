@@ -205,7 +205,7 @@ void createFinalFile() {
         throw std::runtime_error("Can't open " + fileName);
     }
 
-    std::vector<char> buffer(4 * 1024 * 1024); // Sempre e solo 4 MB di RAM
+    std::vector<char> buffer(4 * 1024 * 1024);
     while (in) {
         in.read(buffer.data(), static_cast<std::streamsize>(buffer.size()));
         std::streamsize bytesRead = in.gcount();
