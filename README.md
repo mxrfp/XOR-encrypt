@@ -153,4 +153,4 @@ python main.py test.txt e -r
 - Encrypted files should be decrypted in the same order they were encrypted so both `state.json` cursors stay in sync.
 - Do not use `-r` (`--reset`) on real messages with an already-used key: reusing the same XOR key bytes across different files breaks security.
 - Make sure `key_A.txt` and `key_B.txt` are larger than the total amount of data you want to encrypt/decrypt, otherwise the program will stop once it runs out of key bytes.
-- Keep `scr/key/` and `scr/state.json` in `.gitignore` so you don't accidentally upload your keys to GitHub.
+
