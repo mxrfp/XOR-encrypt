@@ -79,11 +79,11 @@ def get_chunked(file, file_path, mode, chunk_size=1024):
             file_chunk = file.read(
                 chunk_size if counter + chunk_size <= size else size - counter
             )
+            k.seek(current_count + counter)
             counter += chunk_size if counter + chunk_size <= size else size - counter
 
             print(f"\rChunk: {counter}/{size}", end="", flush=True)
 
-            k.seek(current_count + counter)
             key_chunk = k.read(len(file_chunk))
 
             yield file_chunk, key_chunk
