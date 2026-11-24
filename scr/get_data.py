@@ -1,42 +1,44 @@
 import json
 from pathlib import Path
 
+state_path = Path(__file__).resolve().parent / "state.json"
+key_path = Path(__file__).resolve().parent / "key"
 
 def get_decrypt_counter():
-    with open(r"scr\state.json", "r", encoding="utf-8") as j:
+    with open(state_path, "r", encoding="utf-8") as j:
         data = json.load(j)
 
     return data["decrypt_counter"]
 
 
 def get_encrypt_counter():
-    with open(r"scr\state.json", "r", encoding="utf-8") as j:
+    with open(state_path, "r", encoding="utf-8") as j:
         data = json.load(j)
 
     return data["encrypt_counter"]
 
 
 def add_decrypt_counter(n):
-    with open(r"scr\state.json", "r", encoding="utf-8") as j:
+    with open(state_path, "r", encoding="utf-8") as j:
         data = json.load(j)
 
     data["decrypt_counter"] = data.get("decrypt_counter", 0) + n
 
-    with open(r"scr\state.json", "w", encoding="utf-8") as j:
+    with open(state_path, "w", encoding="utf-8") as j:
         json.dump(data, j, indent=4, ensure_ascii=False)
 
 
 def add_encrypt_counter(n):
-    with open(r"scr\state.json", "r", encoding="utf-8") as j:
+    with open(state_path, "r", encoding="utf-8") as j:
         data = json.load(j)
 
     data["encrypt_counter"] = data.get("encrypt_counter", 0) + n
 
-    with open(r"scr\state.json", "w", encoding="utf-8") as j:
+    with open(state_path, "w", encoding="utf-8") as j:
         json.dump(data, j, indent=4, ensure_ascii=False)
 
 
-def reset_state(path="..\\state.json"):
+def reset_state():
     add_decrypt_counter(-get_decrypt_counter())
     add_encrypt_counter(-get_encrypt_counter())
 
@@ -66,14 +68,14 @@ def get_parent(file_path: str):
 
 
 def get_key_size(k:str):
-    return Path(f"scr\\key\\key_{k}.txt").stat().st_size
+    return Path(key_path / f"key_{k}.txt").stat().st_size
 
 
 def get_chunked(file, file_path, mode, chunk_size=1024):
     size = Path(file_path).stat().st_size
     counter = 0
     current_count = get_decrypt_counter() if mode == "d" else get_encrypt_counter()
-    with open(f"scr\\key\\key_{'A' if mode == 'e' else 'B'}.txt", "rb") as k:
+    with open(key_path / f"key_{'A' if mode == 'e' else 'B'}.txt", "rb") as k:
         while counter < size:
             file.seek(counter)
             file_chunk = file.read(
